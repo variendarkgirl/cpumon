@@ -13,7 +13,7 @@ A real-time system monitoring dashboard built with Python, utilizing the `psutil
 
 ## Requirements
 
-- Python 3.x
+- Python 3.12
 - `psutil`
 - `rich`
 
