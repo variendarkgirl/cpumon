@@ -31,7 +31,9 @@ pip install psutil rich
 ## Usage
 To run the system monitoring dashboard, execute the following command in your terminal:
 
+```bash
 python cpu.py
+
 This will launch the dashboard in your terminal, displaying real-time system metrics.
 
 Example Output
