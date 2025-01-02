@@ -1,6 +1,8 @@
 # System Monitoring Dashboard
 
 A real-time system monitoring dashboard built with Python, utilizing the `psutil` and `rich` libraries to display key system metrics such as CPU usage, memory utilization, network activity, battery status, and system temperatures in a visually appealing format.
+![image](https://github.com/user-attachments/assets/e2067e74-a67a-486d-9bd6-2bf7b1f0b4b7)
+
 
 ## Features
 
