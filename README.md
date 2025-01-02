@@ -34,8 +34,7 @@ To run the system monitoring dashboard, execute the following command in your te
    ```bash
    python cpu.py
 
-This will launch the dashboard in your terminal, displaying real-time system metrics.
-
+## This will launch the dashboard in your terminal, displaying real-time system metrics.
 Example Output
 The dashboard will show:
 
