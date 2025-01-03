@@ -2,6 +2,8 @@
 
 A basic real-time system monitoring dashboard built with Python, utilizing the `psutil` and `rich` libraries to display key system metrics such as CPU usage, memory utilization, network activity, battery status, and system temperatures in a visually appealing format.
 ![image](https://github.com/user-attachments/assets/e2067e74-a67a-486d-9bd6-2bf7b1f0b4b7)
+![image](https://github.com/user-attachments/assets/6782b75e-624c-4578-90e1-467650d0a587)
+
 
 
 ## Features
@@ -33,6 +35,8 @@ To run the system monitoring dashboard, execute the following command in your te
 
    ```bash
    python cpu.py
+   python cpuchart.py
+   ```
 
 ## This will launch the dashboard in your terminal, displaying real-time system metrics.
 Example Output
