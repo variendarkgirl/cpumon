@@ -49,7 +49,6 @@ def get_cpu_info():
 # Function to update the plot and text box
 def animate(i):
     try:
-        # Get CPU usage percentage
         cpu_usage = psutil.cpu_percent(interval=0.1)
         
         # Append the new data point with the current time
