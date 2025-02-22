@@ -7,7 +7,7 @@ fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), gridspec_kw={'height_ratio
 x_data, y_data = [], []
 line, = ax1.plot(x_data, y_data, color='blue', lw=2)
 
-ax1.set_ylim(0, 100)  # CPU usage percentage range
+ax1.set_ylim(0, 100)  
 ax1.set_xlim(0, 100)  # Number of data points to display
 ax1.set_xlabel('Time (seconds)')
 ax1.set_ylabel('CPU Usage (%)')
