@@ -16,9 +16,8 @@ ax1.grid(True)
 
 text_box = ax2.text(0.05, 0.95, '', transform=ax2.transAxes, fontsize=10, 
                     verticalalignment='top', bbox=dict(facecolor='white', alpha=0.5))
-ax2.axis('off')  # Hide the axis for the text box
+ax2.axis('off')  
 
-# Function to gather additional CPU information
 def get_cpu_info():
     try:
         cpu_freq = psutil.cpu_freq()
