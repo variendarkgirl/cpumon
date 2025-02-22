@@ -14,7 +14,7 @@ ax1.set_ylabel('CPU Usage (%)')
 ax1.set_title('Real-Time CPU Usage')
 ax1.grid(True)
 
-# Set up the text box for additional CPU information
+
 text_box = ax2.text(0.05, 0.95, '', transform=ax2.transAxes, fontsize=10, 
                     verticalalignment='top', bbox=dict(facecolor='white', alpha=0.5))
 ax2.axis('off')  # Hide the axis for the text box
