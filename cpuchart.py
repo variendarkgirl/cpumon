@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from datetime import datetime, timedelta
 
-# Initialize the figure and axis
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), gridspec_kw={'height_ratios': [3, 1]})
 x_data, y_data = [], []
 line, = ax1.plot(x_data, y_data, color='blue', lw=2)
