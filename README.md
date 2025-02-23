@@ -5,8 +5,7 @@ A basic real-time system monitoring dashboard built with Python, utilizing the `
 
 <img width="402" alt="image" src="https://github.com/user-attachments/assets/b78c923c-09ba-4fd8-83f3-9c2f87b354ec" />
 <img width="402" alt="image" src="https://github.com/user-attachments/assets/2147e5b0-7868-4791-929b-6644285318e0" />
-
-
+<img width="402" alt="image" src="https://github.com/user-attachments/assets/0ef5e71a-95fc-4c34-a51a-0f7e91068433" />
 
 
 ## Features
