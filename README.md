@@ -12,7 +12,7 @@ A basic real-time system monitoring dashboard built with Python, utilizing the `
 
 ## Features
 
-- Real-time monitoring of CPU usage with a heartbeat-like wave representation.
+- Real-time monitoring & display of of CPU usage, Disk usage, Memory usage & Network usage.
 - Displays memory utilization (total, used, free, cached).
 - Shows network data (sent and received bytes).
 - Battery status including percentage and charging status.
