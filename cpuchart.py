@@ -1,4 +1,3 @@
-# windows_task_manager.py
 import sys
 import psutil
 import wmi
