@@ -17,6 +17,7 @@ from PyQt5.QtWidgets import (
     QComboBox, QFileDialog, QToolBar, QStatusBar, QFrame
 )
 import pyqtgraph as pg
+
 # Constants
 MAX_CHART_HISTORY = 120  # 2 minutes at 1s updates
 CONFIG_FILE = 'taskmgr_settings.json'
@@ -94,7 +95,8 @@ class ProcessWorker(QThread):
                                 
                                 # Try to get network info
                                 try:
-                                    connections = proc.connections()
+                                    # Use net_connections() instead of the deprecated connections()
+                                    connections = proc.net_connections()
                                     if connections:
                                         process_info['network_connections'] = len(connections)
                                 except (psutil.AccessDenied, psutil.NoSuchProcess):
@@ -225,6 +227,7 @@ class PerformanceWorker(QThread):
                         continue
                 perf_data['disk_partitions'] = disk_partitions
                 
+                # Network
                 net_io = psutil.net_io_counters()
                 if self.prev_net_io is not None:
                     # Calculate rates
