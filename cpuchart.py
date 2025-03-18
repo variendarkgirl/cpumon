@@ -66,9 +66,16 @@ class ProcessWorker(QThread):
                             'network_usage': 0,
                             'timestamp': current_time
                         }
-
-
                         
+                        # Add additional info when possible
+                        try:
+                            # Get process details with minimal overhead
+                            with proc.oneshot():
+                                # Get memory info
+                                mem_info = proc.memory_info()
+                                process_info['memory_bytes'] = mem_info.rss
+                                
+                                # Get IO counters if available
                                 try:
                                     io = proc.io_counters()
                                     process_info['disk_read'] = io.read_bytes
@@ -124,7 +131,19 @@ class ProcessWorker(QThread):
                     except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                         continue
                 
+                # Emit the updated process data
+                self.data_updated.emit(current_data)
+                
+                # Store for next iteration for differential calculations
+                previous_data = current_data
+                
+            except Exception as e:
+                self.error_occurred.emit(f"Process collection error: {str(e)}")
+            
+            # Sleep to prevent high CPU usage (adjust based on needs)
+            time.sleep(1)
 
+# Performance data collector thread
 class PerformanceWorker(QThread):
     data_updated = pyqtSignal(dict)
     error_occurred = pyqtSignal(str)
@@ -180,6 +199,15 @@ class PerformanceWorker(QThread):
                         read_rate = (disk_io.read_bytes - self.prev_disk_io.read_bytes) / time_diff
                         write_rate = (disk_io.write_bytes - self.prev_disk_io.write_bytes) / time_diff
                         
+                        perf_data['disk'] = {
+                            'read_bytes': disk_io.read_bytes,
+                            'write_bytes': disk_io.write_bytes,
+                            'read_count': disk_io.read_count,
+                            'write_count': disk_io.write_count,
+                            'read_rate': read_rate,
+                            'write_rate': write_rate
+                        }
+                self.prev_disk_io = disk_io
                 
                 # Disk usage for all partitions
                 disk_partitions = []
@@ -351,6 +379,14 @@ class ProcessDetailsDialog(QDialog):
         # Performance tab
         perf_tab = QWidget()
         perf_layout = QGridLayout()
+        
+        perf_layout.addWidget(QLabel("CPU Usage:"), 0, 0)
+        perf_layout.addWidget(QLabel(f"{self.process_data.get('cpu_percent', 0):.1f}%"), 0, 1)
+        
+        perf_layout.addWidget(QLabel("Memory Usage:"), 1, 0)
+        mem_percent = self.process_data.get('memory_percent', 0)
+        mem_bytes = self.process_data.get('memory_bytes', 0)
+        perf_layout.addWidget(QLabel(f"{mem_percent:.1f}% ({self.format_bytes(mem_bytes)})"), 1, 1)
         
         # Add disk read/write rates if available
         if 'disk_read_rate' in self.process_data:
