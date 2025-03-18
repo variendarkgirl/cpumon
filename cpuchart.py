@@ -124,17 +124,6 @@ class ProcessWorker(QThread):
                     except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                         continue
                 
-                # Emit the updated process data
-                self.data_updated.emit(current_data)
-                
-                # Store for next iteration for differential calculations
-                previous_data = current_data
-                
-            except Exception as e:
-                self.error_occurred.emit(f"Process collection error: {str(e)}")
-            
-            # Sleep to prevent high CPU usage (adjust based on needs)
-            time.sleep(1)
 
 class PerformanceWorker(QThread):
     data_updated = pyqtSignal(dict)
