@@ -352,14 +352,6 @@ class ProcessDetailsDialog(QDialog):
         perf_tab = QWidget()
         perf_layout = QGridLayout()
         
-        perf_layout.addWidget(QLabel("CPU Usage:"), 0, 0)
-        perf_layout.addWidget(QLabel(f"{self.process_data.get('cpu_percent', 0):.1f}%"), 0, 1)
-        
-        perf_layout.addWidget(QLabel("Memory Usage:"), 1, 0)
-        mem_percent = self.process_data.get('memory_percent', 0)
-        mem_bytes = self.process_data.get('memory_bytes', 0)
-        perf_layout.addWidget(QLabel(f"{mem_percent:.1f}% ({self.format_bytes(mem_bytes)})"), 1, 1)
-        
         # Add disk read/write rates if available
         if 'disk_read_rate' in self.process_data:
             perf_layout.addWidget(QLabel("Disk Read Rate:"), 2, 0)
