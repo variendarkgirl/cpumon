@@ -66,16 +66,9 @@ class ProcessWorker(QThread):
                             'network_usage': 0,
                             'timestamp': current_time
                         }
+
+
                         
-                        # Add additional info when possible
-                        try:
-                            # Get process details with minimal overhead
-                            with proc.oneshot():
-                                # Get memory info
-                                mem_info = proc.memory_info()
-                                process_info['memory_bytes'] = mem_info.rss
-                                
-                                # Get IO counters if available
                                 try:
                                     io = proc.io_counters()
                                     process_info['disk_read'] = io.read_bytes
