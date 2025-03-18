@@ -198,15 +198,6 @@ class PerformanceWorker(QThread):
                         read_rate = (disk_io.read_bytes - self.prev_disk_io.read_bytes) / time_diff
                         write_rate = (disk_io.write_bytes - self.prev_disk_io.write_bytes) / time_diff
                         
-                        perf_data['disk'] = {
-                            'read_bytes': disk_io.read_bytes,
-                            'write_bytes': disk_io.write_bytes,
-                            'read_count': disk_io.read_count,
-                            'write_count': disk_io.write_count,
-                            'read_rate': read_rate,
-                            'write_rate': write_rate
-                        }
-                self.prev_disk_io = disk_io
                 
                 # Disk usage for all partitions
                 disk_partitions = []
