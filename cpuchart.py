@@ -17,7 +17,6 @@ from PyQt5.QtWidgets import (
     QComboBox, QFileDialog, QToolBar, QStatusBar, QFrame
 )
 import pyqtgraph as pg
-
 # Constants
 MAX_CHART_HISTORY = 120  # 2 minutes at 1s updates
 CONFIG_FILE = 'taskmgr_settings.json'
