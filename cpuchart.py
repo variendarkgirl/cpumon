@@ -225,7 +225,6 @@ class PerformanceWorker(QThread):
                         continue
                 perf_data['disk_partitions'] = disk_partitions
                 
-                # Network
                 net_io = psutil.net_io_counters()
                 if self.prev_net_io is not None:
                     # Calculate rates
