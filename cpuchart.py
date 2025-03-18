@@ -143,7 +143,6 @@ class ProcessWorker(QThread):
             # Sleep to prevent high CPU usage (adjust based on needs)
             time.sleep(1)
 
-# Performance data collector thread
 class PerformanceWorker(QThread):
     data_updated = pyqtSignal(dict)
     error_occurred = pyqtSignal(str)
